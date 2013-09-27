@@ -2,5 +2,15 @@ NewAuthDemo::Application.routes.draw do
   resources :users, :only => [:create, :new, :show]
   resource :session, :only => [:create, :destroy, :new]
 
-  root :to => "users#show"
+  namespace "api", defaults: { format: :json } do
+    resources :photo_taggings, only: [:create, :new]
+    resources :photos, only: [:create, :new] do
+      resources :photo_taggings, only: [:index]
+    end
+    resources :users, only: [] do
+      resources :photos, only: [:index]
+    end
+  end
+
+  root :to => "static_pages#root"
 end

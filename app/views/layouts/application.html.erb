@@ -8,6 +8,8 @@
 </head>
 <body>
 
+  <%= flash[:success] if flash[:success] %>
+
 <% if !current_user.nil? %>
   <ul>
     <li>Logged in as: <%= current_user.username %></li>

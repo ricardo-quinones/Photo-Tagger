@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   validates :session_token, :presence => true
   validates :username, :presence => true
 
+  has_many :photos, class_name: "Photo", foreign_key: :owner_id
+  has_many :photo_taggings
+  has_many :photo_tags, through: :photo_taggings, source: :photo
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)

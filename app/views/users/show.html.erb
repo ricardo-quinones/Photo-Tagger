@@ -1,3 +1,59 @@
 <h1><%= @user.username %></h1>
 
 <p>Hello, dear user!</p>
+
+<form action="<%= api_photos_url %>" method="post" accept-charset="utf-8" id="new_photo_form">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" id="authenticy_token">
+
+  <label>Title:
+    <input type="text" name="photo[title]" value="" id="photo[title]">
+  </label>
+
+
+  <label>Photo URL:
+    <input type="text" name="photo[url]" value="" id="photo[url]">
+  </label>
+
+  <p><input type="submit" value="Submit Your Photo!"></p>
+</form>
+
+
+
+
+<script>
+
+//   $(document).ready(function(){
+//     $('form').on('click', function(event) {
+//       event.preventDefault();
+// 
+//       var $currentPhoto = $(event.currentTarget);
+//       var $form = $(this);
+//       var photo = new PT.Photo($currentPhoto);
+//       console.log(photo);
+//       // photo.create($form.serialize())
+// 
+//       // $.ajax({
+// //         url: $form.attr("action"),
+// //         data: $form.serialize(),
+// //         type: "POST",
+// //         dataType: "json"
+// //         success: function() {
+// //           console.log("Success");
+// //         }
+// //       });
+//     });
+//   });
+// 
+// 
+//   // $(document).ready(function(){
+//   //   $('form').on('click', function(event) {
+//   //     event.preventDefault();
+//   //     var $currentPhoto = $(event.currentTarget).serializeJSON();
+//   //     var $form = $(this);
+//   //     var photo = new Photo($currentPhoto);
+//   //     photo.create($form)
+//   //   });
+//   // });
+
+
+</script>
