@@ -1,0 +1,49 @@
+<style>
+.photo {
+  position: relative;
+  margin: 30px auto;
+  width: 800px;
+  border: 10px solid black;
+  background: #888;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.photo > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tag {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  border: 5px solid red;
+  background: transparent;
+  margin-top: -50px;
+  margin-left: -50px;
+  transition: left 0.5s ease-in;
+  z-index: 1;
+}
+
+.is-tagged > .tag {
+  display: block;
+}
+
+h1 {
+  text-align: center;
+}
+</style>
+
+<h1><%= photo.get('title') %></h1>
+<figure class='photo'>
+  <div class='tag'></div>
+  <img src='<%= photo.get('url') %>'>
+</figure>
+
+
+<a href='#' id='photosListView'>Back!</a>

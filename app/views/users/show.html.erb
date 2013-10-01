@@ -3,15 +3,18 @@
 <p>Hello, dear user!</p>
 
 <form action="<%= api_photos_url %>" method="post" accept-charset="utf-8" id="new_photo_form">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" id="authenticy_token">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
 
   <label>Title:
-    <input type="text" name="photo[title]" value="" id="photo[title]">
+    <input type="text" name="photo[title]" value="">
   </label>
 
 
   <label>Photo URL:
-    <input type="text" name="photo[url]" value="" id="photo[url]">
+    <input type="text" name="photo[url]" value="">
   </label>
 
   <p><input type="submit" value="Submit Your Photo!"></p>
@@ -25,13 +28,13 @@
 //   $(document).ready(function(){
 //     $('form').on('click', function(event) {
 //       event.preventDefault();
-// 
+//
 //       var $currentPhoto = $(event.currentTarget);
 //       var $form = $(this);
 //       var photo = new PT.Photo($currentPhoto);
 //       console.log(photo);
 //       // photo.create($form.serialize())
-// 
+//
 //       // $.ajax({
 // //         url: $form.attr("action"),
 // //         data: $form.serialize(),
@@ -43,8 +46,8 @@
 // //       });
 //     });
 //   });
-// 
-// 
+//
+//
 //   // $(document).ready(function(){
 //   //   $('form').on('click', function(event) {
 //   //     event.preventDefault();

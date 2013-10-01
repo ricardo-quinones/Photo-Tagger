@@ -17,18 +17,35 @@
 //= require underscore
 //= require jquery.serializeJSON
 //= require_tree ./models
+//= require_tree ../templates
 //= require_tree ./views
 //= require_tree .
 
+
+
 (function(root) {
   var PT = root.PT = (root.PT || {});
+  PT.initialize = function() {
+    PT.Photo.fetchByUserId(CURRENT_USER_ID, function () {
+      PT.showPhotosIndex();
+    });
+  };
 
-  PT.initialize = function(CURRENT_USER_ID, callback) {
-    var photos = PT.Photo.fetchByUserId(1, new PT.Photo);
+  PT.showPhotosIndex = function () {
+    var $content = $('#content');
+    $content.empty();
 
-    var photoListView = new PT.PhotosListView();
+    photosListView = new PT.PhotosListView();
+    photoFormView = new PT.PhotoFormView();
 
-    var $el = photoListView.render(photos);
-    $("#content").append($el);
+    $content.html(photosListView.render());
+    $content.append(photoFormView.render());
+  };
+
+  PT.showPhotoDetail = function (photo) {
+    var $content = $('#content');
+
+    var photoDetailView = new PT.PhotoDetailView(photo);
+    $content.html(photoDetailView.render());
   }
 })(this);

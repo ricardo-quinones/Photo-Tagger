@@ -1,20 +1,36 @@
-(function(root) {
-
+(function (root) {
   var PT = root.PT = (root.PT || {});
 
   var PhotosListView = PT.PhotosListView = function() {
-    this.$el = $("<ul>");
+    this.$el = $('<div>');
+    this.$el.on('click', 'a', this.showDetail.bind(this))
+
+    PT.Photo.on('add', this.render.bind(this));
   };
 
-  PhotosListView.prototype.render = function(photos) {
-    this.$el.empty();
-    var $ul = this.$el
+  PhotosListView.prototype.showDetail = function (event) {
+    event.preventDefault();
 
-    _.each(photos, function(photo) {
-      $ul.append("<li>", { value: photo.url });
+    var $currentTarget = $(event.currentTarget);
+    var photo = PT.Photo.find($currentTarget.attr('data-id'));
+
+    PT.showPhotoDetail(photo);
+  };
+
+  PhotosListView.prototype.render = function() {
+    var $ul = $('<ul>');
+
+    _(PT.Photo.all).each(function(photo) {
+      var $li = $('<li>');
+      var $a = $('<a>');
+      $a.text(photo.get('title'));
+      $a.attr('href', '#');
+      $a.attr('data-id', photo.get('id'));
+
+      $ul.append($li.html($a));
     });
 
-    this.$el.append($ul);
+    this.$el.html($ul);
 
     return this.$el;
   };

@@ -1,17 +1,13 @@
 <div id="content">
 
-  <h3>Con Gato</h3>
-
 
 </div>
 
 <script>
-$(document).ready(function () {
-  //bootstrap current user id
-  PT.initialize(1, PT.PhotosListView.render);
+  var CURRENT_USER_ID = <%= current_user.id %>;
+  var USERS = <%= User.all.to_json.html_safe %>
 
-
-});
+  $(PT.initialize);
 </script>
 
 
