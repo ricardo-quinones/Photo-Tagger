@@ -30,7 +30,6 @@
     });
 
     var tagSelectView = new PT.TagSelectView(this.photo, event);
-
     tagSelectView.render($tag)
 
     return this.$el;
