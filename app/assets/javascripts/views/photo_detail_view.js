@@ -16,23 +16,13 @@
 
   PhotoDetailView.prototype.popTagSelectView = function (event) {
     event.preventDefault;
+
+    $('.photo-tag').remove();
     $photo = $('.photo');
-    $tag = $photo.find('.tag');
-
-    $photo.addClass('is-tagged');
-
-    var x = event.offsetX / $photo.outerWidth() * 100
-    var y = event.offsetY / $photo.outerHeight() * 100
-
-    $tag.css({
-      left: x + "%",
-      top: y + "%"
-    });
 
     var tagSelectView = new PT.TagSelectView(this.photo, event);
-    tagSelectView.render($tag)
 
-    return this.$el;
+    return this.$el.append(tagSelectView.render());
   };
 
   PhotoDetailView.prototype.render = function () {

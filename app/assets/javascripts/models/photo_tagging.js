@@ -16,6 +16,8 @@
       data: { photo_tagging: that.attributes },
       dataType: "json",
       success: function (newAttrs) {
+        console.log("PhotoTag created!!");
+        
         _(that.attributes).extend(newAttrs);
 
         PhotoTagging.all.push(that);
